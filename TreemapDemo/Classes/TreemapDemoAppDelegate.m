@@ -1,21 +1,20 @@
-#import "IPhoneSimpleDemoAppDelegate.h"
-#import "IPhoneSimpleDemoViewController.h"
+#import "TreemapDemoAppDelegate.h"
 
-@implementation IPhoneSimpleDemoAppDelegate
+@implementation TreemapDemoAppDelegate
 
 @synthesize window;
-@synthesize viewController;
+@synthesize navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [window addSubview:viewController.view];
-    [window makeKeyAndVisible];
+	[window addSubview:[navigationController view]];
+	[window makeKeyAndVisible];
 
 	return YES;
 }
 
 - (void)dealloc {
-    [viewController release];
-    [window release];
+	[navigationController release];
+	[window release];
 
     [super dealloc];
 }

@@ -13,8 +13,9 @@
 
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
+		self.opaque = YES;
 		self.layer.borderWidth = 1.0;
-		self.layer.borderColor = [[UIColor whiteColor] CGColor];
+		self.layer.borderColor = [[UIColor darkGrayColor] CGColor];
 
 		self.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width - 4, 20)];
 		textLabel.font = [UIFont boldSystemFontOfSize:20];

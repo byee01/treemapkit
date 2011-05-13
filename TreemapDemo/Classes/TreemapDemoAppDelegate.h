@@ -1,14 +1,12 @@
 #import <UIKit/UIKit.h>
 
-@class IPhoneSimpleDemoViewController;
-
-@interface IPhoneSimpleDemoAppDelegate : NSObject <UIApplicationDelegate> {
+@interface TreemapDemoAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
-    IPhoneSimpleDemoViewController *viewController;
+	UINavigationController *navigationController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet IPhoneSimpleDemoViewController *viewController;
+@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 @end
 

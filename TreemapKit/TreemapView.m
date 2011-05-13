@@ -5,6 +5,7 @@
 @synthesize dataSource;
 @synthesize delegate;
 
+// Recursive workhorse of the process
 - (void)calcNodePositions:(CGRect)rect nodes:(NSArray *)nodes width:(CGFloat)width height:(CGFloat)height depth:(NSInteger)depth withCreate:(BOOL)createNode {
     if (nodes.count <= 1) {
         NSInteger index = [[[nodes objectAtIndex:0] valueForKey:@"index"] integerValue];
@@ -167,6 +168,8 @@
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         initialized = NO;
+		self.backgroundColor = [UIColor grayColor];
+		self.opaque = YES;
     }
     return self;
 }
@@ -181,8 +184,10 @@
 }
 
 - (void)dealloc {
-    [dataSource release];
-    [delegate release];
+    if (dataSource)
+		[dataSource release];
+    if (delegate)
+		[delegate release];
 
     [super dealloc];
 }

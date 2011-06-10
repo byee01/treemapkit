@@ -1,0 +1,343 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		113DEE871391489100FD4B11 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DEE861391489100FD4B11 /* Cocoa.framework */; };
+		113DEE911391489100FD4B11 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 113DEE8F1391489100FD4B11 /* InfoPlist.strings */; };
+		113DEE941391489100FD4B11 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DEE931391489100FD4B11 /* main.m */; };
+		113DEE971391489100FD4B11 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 113DEE951391489100FD4B11 /* Credits.rtf */; };
+		113DEE9A1391489100FD4B11 /* TreemapKitDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DEE991391489100FD4B11 /* TreemapKitDemoAppDelegate.m */; };
+		113DEE9D1391489100FD4B11 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113DEE9B1391489100FD4B11 /* MainMenu.xib */; };
+		113DEEB6139149B900FD4B11 /* TreemapKitDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DEEB4139149B900FD4B11 /* TreemapKitDemoViewController.m */; };
+		113DEEB7139149B900FD4B11 /* TreemapKitDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113DEEB5139149B900FD4B11 /* TreemapKitDemoViewController.xib */; };
+		113DEEB913914BAB00FD4B11 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DEEB813914BAB00FD4B11 /* QuartzCore.framework */; };
+		1197D6AB139168E700DF5F71 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1197D6AA139168E700DF5F71 /* data.plist */; };
+		1197D6B0139168F500DF5F71 /* TreemapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1197D6AD139168F500DF5F71 /* TreemapView.m */; };
+		1197D6B1139168F500DF5F71 /* TreemapViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1197D6AF139168F500DF5F71 /* TreemapViewCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		113DEE821391489100FD4B11 /* TreemapKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreemapKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		113DEE861391489100FD4B11 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		113DEE891391489100FD4B11 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		113DEE8A1391489100FD4B11 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		113DEE8B1391489100FD4B11 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		113DEE8E1391489100FD4B11 /* TreemapKitDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TreemapKitDemo-Info.plist"; sourceTree = "<group>"; };
+		113DEE901391489100FD4B11 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		113DEE921391489100FD4B11 /* TreemapKitDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TreemapKitDemo-Prefix.pch"; sourceTree = "<group>"; };
+		113DEE931391489100FD4B11 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		113DEE961391489100FD4B11 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		113DEE981391489100FD4B11 /* TreemapKitDemoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreemapKitDemoAppDelegate.h; sourceTree = "<group>"; };
+		113DEE991391489100FD4B11 /* TreemapKitDemoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreemapKitDemoAppDelegate.m; sourceTree = "<group>"; };
+		113DEE9C1391489100FD4B11 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		113DEEB3139149B900FD4B11 /* TreemapKitDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreemapKitDemoViewController.h; sourceTree = "<group>"; };
+		113DEEB4139149B900FD4B11 /* TreemapKitDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreemapKitDemoViewController.m; sourceTree = "<group>"; };
+		113DEEB5139149B900FD4B11 /* TreemapKitDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TreemapKitDemoViewController.xib; sourceTree = "<group>"; };
+		113DEEB813914BAB00FD4B11 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1197D6AA139168E700DF5F71 /* data.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = data.plist; sourceTree = "<group>"; };
+		1197D6AC139168F500DF5F71 /* TreemapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreemapView.h; path = ../../TreemapKitCocoa/TreemapView.h; sourceTree = "<group>"; };
+		1197D6AD139168F500DF5F71 /* TreemapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreemapView.m; path = ../../TreemapKitCocoa/TreemapView.m; sourceTree = "<group>"; };
+		1197D6AE139168F500DF5F71 /* TreemapViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreemapViewCell.h; path = ../../TreemapKitCocoa/TreemapViewCell.h; sourceTree = "<group>"; };
+		1197D6AF139168F500DF5F71 /* TreemapViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreemapViewCell.m; path = ../../TreemapKitCocoa/TreemapViewCell.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		113DEE7F1391489100FD4B11 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				113DEEB913914BAB00FD4B11 /* QuartzCore.framework in Frameworks */,
+				113DEE871391489100FD4B11 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		113DEE771391489100FD4B11 = {
+			isa = PBXGroup;
+			children = (
+				113DEE8C1391489100FD4B11 /* TreemapKitDemo */,
+				113DEE851391489100FD4B11 /* Frameworks */,
+				113DEE831391489100FD4B11 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		113DEE831391489100FD4B11 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				113DEE821391489100FD4B11 /* TreemapKitDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		113DEE851391489100FD4B11 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				113DEEB813914BAB00FD4B11 /* QuartzCore.framework */,
+				113DEE861391489100FD4B11 /* Cocoa.framework */,
+				113DEE881391489100FD4B11 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		113DEE881391489100FD4B11 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				113DEE891391489100FD4B11 /* AppKit.framework */,
+				113DEE8A1391489100FD4B11 /* CoreData.framework */,
+				113DEE8B1391489100FD4B11 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		113DEE8C1391489100FD4B11 /* TreemapKitDemo */ = {
+			isa = PBXGroup;
+			children = (
+				1197D6B31391690A00DF5F71 /* Controllers */,
+				1197D6B2139168FE00DF5F71 /* Views */,
+				113DEEAB139148D300FD4B11 /* TreemapKit */,
+				113DEE981391489100FD4B11 /* TreemapKitDemoAppDelegate.h */,
+				113DEE991391489100FD4B11 /* TreemapKitDemoAppDelegate.m */,
+				113DEE8D1391489100FD4B11 /* Supporting Files */,
+			);
+			path = TreemapKitDemo;
+			sourceTree = "<group>";
+		};
+		113DEE8D1391489100FD4B11 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1197D6AA139168E700DF5F71 /* data.plist */,
+				113DEE8E1391489100FD4B11 /* TreemapKitDemo-Info.plist */,
+				113DEE8F1391489100FD4B11 /* InfoPlist.strings */,
+				113DEE921391489100FD4B11 /* TreemapKitDemo-Prefix.pch */,
+				113DEE931391489100FD4B11 /* main.m */,
+				113DEE951391489100FD4B11 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		113DEEAB139148D300FD4B11 /* TreemapKit */ = {
+			isa = PBXGroup;
+			children = (
+				1197D6AC139168F500DF5F71 /* TreemapView.h */,
+				1197D6AD139168F500DF5F71 /* TreemapView.m */,
+				1197D6AE139168F500DF5F71 /* TreemapViewCell.h */,
+				1197D6AF139168F500DF5F71 /* TreemapViewCell.m */,
+			);
+			name = TreemapKit;
+			sourceTree = "<group>";
+		};
+		1197D6B2139168FE00DF5F71 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				113DEE9B1391489100FD4B11 /* MainMenu.xib */,
+				113DEEB5139149B900FD4B11 /* TreemapKitDemoViewController.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		1197D6B31391690A00DF5F71 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				113DEEB3139149B900FD4B11 /* TreemapKitDemoViewController.h */,
+				113DEEB4139149B900FD4B11 /* TreemapKitDemoViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		113DEE811391489100FD4B11 /* TreemapKitDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 113DEEA01391489100FD4B11 /* Build configuration list for PBXNativeTarget "TreemapKitDemo" */;
+			buildPhases = (
+				113DEE7E1391489100FD4B11 /* Sources */,
+				113DEE7F1391489100FD4B11 /* Frameworks */,
+				113DEE801391489100FD4B11 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TreemapKitDemo;
+			productName = TreemapKitDemo;
+			productReference = 113DEE821391489100FD4B11 /* TreemapKitDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		113DEE791391489100FD4B11 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Blazing Cloud, Inc.";
+			};
+			buildConfigurationList = 113DEE7C1391489100FD4B11 /* Build configuration list for PBXProject "TreemapKitDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 113DEE771391489100FD4B11;
+			productRefGroup = 113DEE831391489100FD4B11 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				113DEE811391489100FD4B11 /* TreemapKitDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		113DEE801391489100FD4B11 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				113DEE911391489100FD4B11 /* InfoPlist.strings in Resources */,
+				113DEE971391489100FD4B11 /* Credits.rtf in Resources */,
+				113DEE9D1391489100FD4B11 /* MainMenu.xib in Resources */,
+				113DEEB7139149B900FD4B11 /* TreemapKitDemoViewController.xib in Resources */,
+				1197D6AB139168E700DF5F71 /* data.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		113DEE7E1391489100FD4B11 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				113DEE941391489100FD4B11 /* main.m in Sources */,
+				113DEE9A1391489100FD4B11 /* TreemapKitDemoAppDelegate.m in Sources */,
+				113DEEB6139149B900FD4B11 /* TreemapKitDemoViewController.m in Sources */,
+				1197D6B0139168F500DF5F71 /* TreemapView.m in Sources */,
+				1197D6B1139168F500DF5F71 /* TreemapViewCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		113DEE8F1391489100FD4B11 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				113DEE901391489100FD4B11 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		113DEE951391489100FD4B11 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				113DEE961391489100FD4B11 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		113DEE9B1391489100FD4B11 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				113DEE9C1391489100FD4B11 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		113DEE9E1391489100FD4B11 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		113DEE9F1391489100FD4B11 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		113DEEA11391489100FD4B11 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TreemapKitDemo/TreemapKitDemo-Prefix.pch";
+				INFOPLIST_FILE = "TreemapKitDemo/TreemapKitDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		113DEEA21391489100FD4B11 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TreemapKitDemo/TreemapKitDemo-Prefix.pch";
+				INFOPLIST_FILE = "TreemapKitDemo/TreemapKitDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		113DEE7C1391489100FD4B11 /* Build configuration list for PBXProject "TreemapKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				113DEE9E1391489100FD4B11 /* Debug */,
+				113DEE9F1391489100FD4B11 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		113DEEA01391489100FD4B11 /* Build configuration list for PBXNativeTarget "TreemapKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				113DEEA11391489100FD4B11 /* Debug */,
+				113DEEA21391489100FD4B11 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 113DEE791391489100FD4B11 /* Project object */;
+}

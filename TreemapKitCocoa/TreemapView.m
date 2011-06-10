@@ -111,7 +111,7 @@
     for (NSInteger i = 0; i < values.count; i++) {
         NSNumber *value = [values objectAtIndex:i];
         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
-        [dic setValue:[NSNumber numberWithInt:i] forKey:@"index"];
+        [dic setValue:[NSNumber numberWithInteger:i] forKey:@"index"];
         [dic setValue:value forKey:@"value"];
         [nodes addObject:dic];
     }
@@ -182,6 +182,17 @@
         initialized = NO;
     }
     return self;
+}
+
+/*- (void)viewWillStartLiveResize {
+	
+}*/
+
+// a view receives viewWillEndLiveResize after the frame is last changed for a live resize
+- (void)viewDidEndLiveResize {
+	// This is the best I know to do ... there's no NSView alternative 
+	//   for UIView's layoutSubviews, as far as I can tell.
+	[self resizeNodes];
 }
 
 - (void)dealloc {

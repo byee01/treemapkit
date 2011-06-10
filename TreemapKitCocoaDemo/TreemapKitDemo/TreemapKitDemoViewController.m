@@ -109,6 +109,7 @@
 	 */
 	
 	self.sortedKeys = [[self.data allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+
 }
 
 @end

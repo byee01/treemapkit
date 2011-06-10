@@ -1,7 +1,6 @@
-TreemapDemo/*.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad
-TreemapDemo/*.xcodeproj/xcuserdata/*.xcuserdatad/
-TreemapDemo/*.xcodeproj/*.pbxuser
-TreemapDemo/*.xcodeproj/*.mode*
-TreemapDemo/build/Debug-*
-TreemapDemo/build/Release-*
-TreemapDemo/build/*.build
+xcuserdata
+project.xcworkspace
+*.pbxuser
+*.mode1v3
+.DS_Store
+build

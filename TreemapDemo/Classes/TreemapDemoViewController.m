@@ -81,12 +81,11 @@
 	return YES;
 }
 
-//- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation 
-- (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation duration:(NSTimeInterval)duration 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation 
 	// A this point, our view orientation is set to the new orientation.
 {
 	TreemapView *tree = (TreemapView *)self.view;
-	[tree reloadData];
+	[tree setNeedsLayout];
 }
 
 - (void)didReceiveMemoryWarning {

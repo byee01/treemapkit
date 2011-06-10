@@ -177,10 +177,20 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
+	// Wrap the change of layout using an animation block to animate the layout changes.
+	[UIView beginAnimations:@"rearrange" context:nil];
+	[UIView setAnimationDuration:0.5];
+	
     if (!initialized) {
         [self createNodes];
         initialized = YES;
     }
+	else {	// we need to rearrange, at the very least...
+		[self resizeNodes];
+	}
+	
+	[UIView commitAnimations];
+
 }
 
 - (void)dealloc {

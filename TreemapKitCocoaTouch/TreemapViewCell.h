@@ -16,7 +16,7 @@
 
 @property NSInteger index;
 
-@property (nonatomic, retain) id <TreemapViewCellDelegate> delegate;
+@property (nonatomic, retain) IBOutlet id <TreemapViewCellDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame;
 

@@ -1,3 +1,8 @@
+NOTE:
+=====
+
+Other forks, including the original branch of this code all supply what amounts to a ListMap, not a TreeMap, as there is no notion of nesting items inside other items, parents, children, etc.  The goal of this project will be to create a true Tree implementation.
+
 TreemapKit
 ==========
 

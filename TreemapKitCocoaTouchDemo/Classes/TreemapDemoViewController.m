@@ -66,7 +66,7 @@
 }
 
 - (TreemapViewCell *)treemapView:(TreemapView *)treemapView cellForIndex:(NSInteger)index forRect:(CGRect)rect {
-	TreemapViewCell *cell = [[TreemapViewCell alloc] initWithFrame:rect];
+	TreemapViewCell *cell = [[[TreemapViewCell alloc] initWithFrame:rect] autorelease];
 	[self updateCell:cell forIndex:index];
 	return cell;
 }

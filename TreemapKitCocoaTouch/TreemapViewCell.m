@@ -17,7 +17,7 @@
 		self.layer.borderWidth = 1.0;
 		self.layer.borderColor = [[UIColor darkGrayColor] CGColor];
 
-		self.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width - 4, 20)];
+		self.textLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width - 4, 20)] autorelease];
 		textLabel.font = [UIFont boldSystemFontOfSize:20];
 		textLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
 		textLabel.textAlignment = UITextAlignmentCenter;
@@ -27,7 +27,7 @@
 		textLabel.adjustsFontSizeToFitWidth = YES;
 		[self addSubview:textLabel];
 
-		self.valueLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width - 4, 20)];
+		self.valueLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width - 4, 20)] autorelease];
 		valueLabel.font = [UIFont boldSystemFontOfSize:20];
 		valueLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
 		valueLabel.textAlignment = UITextAlignmentCenter;

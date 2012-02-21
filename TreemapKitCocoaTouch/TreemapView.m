@@ -8,7 +8,7 @@
 // Recursive workhorse of the process
 - (void)calcNodePositions:(CGRect)rect nodes:(NSArray *)nodes width:(CGFloat)width height:(CGFloat)height depth:(NSInteger)depth withCreate:(BOOL)createNode {
     if (nodes.count <= 1) {
-        NSInteger index = [[[nodes objectAtIndex:0] valueForKey:@"index"] integerValue];
+        NSInteger index = [[[nodes objectAtIndex:0] objectForKey:@"index"] integerValue];
         if (createNode) {
             TreemapViewCell *cell = [dataSource treemapView:self cellForIndex:index forRect:rect];
             cell.index = index;

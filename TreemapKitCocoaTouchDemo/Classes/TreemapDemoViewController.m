@@ -10,7 +10,7 @@
 
 - (void)updateCell:(TreemapViewCell *)cell forIndex:(NSInteger)index {
 	NSString *key = [self.sortedKeys objectAtIndex:index];
-	NSNumber *val = [self.data valueForKey:key];
+	NSNumber *val = [self.data objectForKey:key];
 	cell.textLabel.text = key;
 	cell.valueLabel.text = [val stringValue];
 	cell.backgroundColor = [UIColor colorWithHue:(float)index / (self.sortedKeys.count + 3)
@@ -26,7 +26,7 @@
 	 * change the value
 	 */
 	NSString *key = [self.sortedKeys objectAtIndex:index];
-	NSInteger num = [[self.data valueForKey:key] integerValue] + 300;
+	NSInteger num = [[self.data objectForKey:key] integerValue] + 300;
 	NSNumber *newNum = [NSNumber numberWithInteger:num];
 	[self.data setValue:newNum forKey:key];
 
@@ -60,7 +60,7 @@
 - (NSArray *)valuesForTreemapView:(TreemapView *)treemapView {
 	NSMutableArray *values = [NSMutableArray arrayWithCapacity:self.sortedKeys.count];
 	for (NSString *key in self.sortedKeys) {
-		[values addObject:[self.data valueForKey:key]];
+		[values addObject:[self.data objectForKey:key]];
 	}
 	return values;
 }

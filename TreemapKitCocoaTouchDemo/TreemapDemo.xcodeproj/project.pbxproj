@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		107E17EC154DB43100DE3F82 /* internet_usage.csv in Resources */ = {isa = PBXBuildFile; fileRef = 107E17EB154DB43100DE3F82 /* internet_usage.csv */; };
+		107E17F3154DB72C00DE3F82 /* TreemapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 107E17F2154DB72C00DE3F82 /* TreemapNode.m */; };
 		1CB158601170635500914E92 /* TreemapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB1585D1170635500914E92 /* TreemapView.m */; };
 		1CB158611170635500914E92 /* TreemapViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB1585F1170635500914E92 /* TreemapViewCell.m */; };
 		1CB158631170652B00914E92 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CB158621170652B00914E92 /* data.plist */; };
@@ -21,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		107E17EB154DB43100DE3F82 /* internet_usage.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = internet_usage.csv; sourceTree = "<group>"; };
+		107E17F1154DB72C00DE3F82 /* TreemapNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreemapNode.h; sourceTree = "<group>"; };
+		107E17F2154DB72C00DE3F82 /* TreemapNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreemapNode.m; sourceTree = "<group>"; };
 		1CB1585C1170635500914E92 /* TreemapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreemapView.h; sourceTree = "<group>"; };
 		1CB1585D1170635500914E92 /* TreemapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreemapView.m; sourceTree = "<group>"; };
 		1CB1585E1170635500914E92 /* TreemapViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreemapViewCell.h; sourceTree = "<group>"; };
@@ -81,6 +86,8 @@
 				1CB1585D1170635500914E92 /* TreemapView.m */,
 				1CB1585E1170635500914E92 /* TreemapViewCell.h */,
 				1CB1585F1170635500914E92 /* TreemapViewCell.m */,
+				107E17F1154DB72C00DE3F82 /* TreemapNode.h */,
+				107E17F2154DB72C00DE3F82 /* TreemapNode.m */,
 			);
 			name = TreemapKit;
 			path = ../TreemapKitCocoaTouch;
@@ -111,6 +118,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				107E17EB154DB43100DE3F82 /* internet_usage.csv */,
 				1CB158621170652B00914E92 /* data.plist */,
 				377E4D3A137CD54100E4A5EB /* TreemapDemoViewController.xib */,
 				377E4D3B137CD54100E4A5EB /* MainWindow.xib */,
@@ -184,6 +192,7 @@
 				1CB158631170652B00914E92 /* data.plist in Resources */,
 				377E4D3C137CD54100E4A5EB /* TreemapDemoViewController.xib in Resources */,
 				377E4D3D137CD54100E4A5EB /* MainWindow.xib in Resources */,
+				107E17EC154DB43100DE3F82 /* internet_usage.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +208,7 @@
 				28D7ACF80DDB3853001CB0EB /* TreemapDemoViewController.m in Sources */,
 				1CB158601170635500914E92 /* TreemapView.m in Sources */,
 				1CB158611170635500914E92 /* TreemapViewCell.m in Sources */,
+				107E17F3154DB72C00DE3F82 /* TreemapNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

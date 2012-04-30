@@ -1,4 +1,5 @@
 #import "TreemapView.h"
+#import "TreemapNode.h"
 
 @implementation TreemapView
 
@@ -27,7 +28,7 @@
 
     CGFloat total = 0;
     for (NSDictionary *dic in nodes) {
-        total += [[dic objectForKey:@"value"] floatValue];
+        total += [[dic objectForKey:@"value"] score];
     }
     CGFloat half = total / 2.0;
 
@@ -47,7 +48,7 @@
                 m = i;
                 break;
             }
-            total += [[[nodes objectAtIndex:i] objectForKey:@"value"] floatValue];
+            total += [[[nodes objectAtIndex:i] objectForKey:@"value"] score];
         }
         if (m < 1) m = 1;
     }
@@ -57,11 +58,11 @@
 
     CGFloat aTotal = 0.0;
     for (NSDictionary *dic in aArray) {
-        aTotal += [[dic objectForKey:@"value"] floatValue];
+        aTotal += [[dic objectForKey:@"value"] score];
     }
     CGFloat bTotal = 0.0;
     for (NSDictionary *dic in bArray) {
-        bTotal += [[dic objectForKey:@"value"] floatValue];
+        bTotal += [[dic objectForKey:@"value"] score];
     }
 
     CGFloat aRatio;
@@ -105,11 +106,12 @@
     [self calcNodePositions:bRect nodes:bArray width:bWidth height:bHeight depth:depth + 1 withCreate:createNode];
 }
 
+// Returns an array of nodes from valuesForTreemapView and dataSource
 - (NSArray *)getData {
     NSArray *values = [dataSource valuesForTreemapView:self];
     NSMutableArray *nodes = [NSMutableArray arrayWithCapacity:values.count];
     for (NSInteger i = 0; i < values.count; i++) {
-        NSNumber *value = [values objectAtIndex:i];
+        TreemapNode *value = [values objectAtIndex:i];
         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
         [dic setValue:[NSNumber numberWithInt:i] forKey:@"index"];
         [dic setValue:value forKey:@"value"];
@@ -118,6 +120,8 @@
     return nodes;
 }
 
+// Run getData, create all nodes. Ok.
+// Runs calcNodePositions WITH withCreate.
 - (void)createNodes {
     NSArray *nodes = [self getData];
     if (nodes && nodes.count > 0) {
@@ -130,6 +134,7 @@
     }
 }
 
+// Pretty simple, run getData again, calcNodePositions WITHOUT withCreate.
 - (void)resizeNodes {
     NSArray *nodes = [self getData];
     if (nodes && nodes.count > 0) {
@@ -152,7 +157,8 @@
 #pragma mark Public methods
 
 - (void)reloadData {
-    [self resizeNodes];
+//    [self resizeNodes];
+    [self createNodes];
 }
 
 #pragma mark -

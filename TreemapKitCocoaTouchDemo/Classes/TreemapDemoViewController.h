@@ -2,12 +2,18 @@
 #import "TreemapView.h"
 
 @interface TreemapDemoViewController : UIViewController <TreemapViewDelegate, TreemapViewDataSource> {
-	NSArray *sortedKeys;
+	NSMutableArray *sortedKeys;
 	NSMutableDictionary *data;
+    
+	NSMutableArray *sortedCategoryKeys;
+	NSMutableDictionary *categoryData;
 }
 
-@property (nonatomic, copy) NSArray *sortedKeys;
-@property (nonatomic, retain) NSMutableDictionary *data;
+@property (strong, nonatomic) NSMutableArray *sortedKeys;
+@property (strong, nonatomic) NSMutableDictionary *data;
+
+@property (strong, nonatomic) NSMutableArray *sortedCategoryKeys;
+@property (strong, nonatomic) NSMutableDictionary *categoryData;
 
 @end
 

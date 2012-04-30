@@ -28,7 +28,7 @@
 		[self addSubview:textLabel];
 
 		self.valueLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width - 4, 20)] autorelease];
-		valueLabel.font = [UIFont boldSystemFontOfSize:20];
+		valueLabel.font = [UIFont boldSystemFontOfSize:14];
 		valueLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
 		valueLabel.textAlignment = UITextAlignmentCenter;
 		valueLabel.textColor = [UIColor whiteColor];
@@ -51,13 +51,13 @@
 	if ([delegate respondsToSelector:@selector(treemapViewCell:tapped:)])
 		[delegate treemapViewCell:self tapped:index];
 }
-
-- (void)dealloc {
-	[valueLabel release];
-	[textLabel release];
-	[delegate release];
-
-	[super dealloc];
-}
+//
+//- (void)dealloc {
+//	[valueLabel release];
+//	[textLabel release];
+//	[delegate release];
+//
+//	[super dealloc];
+//}
 
 @end

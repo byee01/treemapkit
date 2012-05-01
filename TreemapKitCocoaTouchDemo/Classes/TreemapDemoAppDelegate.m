@@ -1,21 +1,23 @@
+#import "TreemapDemoViewController.h"
 #import "TreemapDemoAppDelegate.h"
 
 @implementation TreemapDemoAppDelegate
 
-@synthesize window;
-@synthesize navigationController;
+@synthesize window, treemapViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	[window addSubview:[navigationController view]];
+	[window addSubview:[treemapViewController view]];
 	[window makeKeyAndVisible];
 
 	return YES;
 }
 
 - (void)dealloc {
-	[navigationController release];
+	[treemapViewController release];
 	[window release];
 
+    [treemapViewController release];
+    [treemapViewController release];
     [super dealloc];
 }
 

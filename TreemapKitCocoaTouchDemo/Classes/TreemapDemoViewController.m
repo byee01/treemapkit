@@ -4,8 +4,7 @@
 //#import "JSONKit.h"
 
 @implementation TreemapDemoViewController
-
-@synthesize data, sortedKeys, categoryData, sortedCategoryKeys;
+@synthesize scrollView, data, sortedKeys, categoryData, sortedCategoryKeys, topLevelTreemap;
 
 #pragma mark -
 
@@ -14,8 +13,6 @@
 	TreemapNode *val = [self.data objectForKey:key];
 	cell.textLabel.text = key;
     cell.valueLabel.text = [val category];
-//    NSLog(@"%f", ((float) [val categoryIndex] + 1.0) / [self.categories count] );
-//	float rando = (float)((arc4random() % 10)/100.0) + 1.0;
     // (float) ([val categoryIndex] + 1.0)  / [self.categories count]
     cell.backgroundColor = [UIColor colorWithHue: (float)index / (self.sortedKeys.count)
 									  saturation:1 brightness:0.75 alpha:1];
@@ -33,7 +30,6 @@
 	NSInteger num = [[self.data objectForKey:key] integerValue] + 300;
 	NSNumber *newNum = [NSNumber numberWithInteger:num];
 	[self.data setValue:newNum forKey:key];
-     
 	 */
     
 //    // This is for removing. Just a test.    
@@ -45,6 +41,7 @@
 
     NSString *key = [self.sortedKeys objectAtIndex:index];
     NSLog(@"%@ key is for %@ and sorted keys is at count %d/%d", key, [self.data objectForKey:key], [self.sortedKeys count], [[self.data allKeys] count]);
+    
     NSLog(@"\n\nThe original data and keys:\n%@\n\n", self.data);
     if([[[self.data objectForKey:key] childNodes] count] > 0) {
         NSLog(@"Ha! You have %d children.", [[[self.data objectForKey:key] childNodes] count]);
@@ -126,16 +123,31 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
+    // Set up scrollViews
+    scrollView.clipsToBounds = YES;
+    scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+    [scrollView setContentSize:self.view.frame.size];
+    [scrollView setScrollEnabled:YES];
+	[scrollView setBackgroundColor:[UIColor blackColor]];
+    [scrollView setDelegate:self];
+    [scrollView setMaximumZoomScale:5.0];
+    [scrollView setMinimumZoomScale:1.0];
+
+    // Add gesture recognizers
+//    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(doPinch:)];
+//    [self.view addGestureRecognizer:pinch];
     
-    self.navigationItem.title = @"Brian Yee's Treemapper";
-    
-    
+
+
     NSString *path = [[NSBundle mainBundle] pathForResource:@"internet_usage" ofType:@"csv"];
     NSLog( @"filePath: %@", path );
+//    /afs/andrew.cmu.edu/usr8/byee/Library/Application Support/iPhone Simulator/5.0/Applications/8F31AAD8-3600-477A-B55D-F9CB45D56333/TreemapDemo.app/military_spending.csv
+//    /afs/andrew.cmu.edu/usr8/byee/Library/Application Support/iPhone Simulator/5.0/Applications/8F31AAD8-3600-477A-B55D-F9CB45D56333/TreemapDemo.app/internet_usage.csv
     
     self.data = [[NSMutableDictionary alloc] init];    
     NSError*  error;
     NSString* rawData = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error ];
+
     NSArray* allLinedStrings = [rawData componentsSeparatedByCharactersInSet: [NSCharacterSet newlineCharacterSet]];
     
     NSMutableArray *rawCategories = [[NSMutableArray alloc] init];
@@ -145,18 +157,17 @@
         NSArray *dataLine = [dataString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
         
         // Pull first two (name and category) and then add the rest of the data as an array.
-        TreemapNode *newNode = [[TreemapNode alloc] initWithData:[dataLine objectAtIndex:0] Category:[dataLine objectAtIndex:1] ValA:[[dataLine objectAtIndex:2] floatValue] ValB:[[dataLine objectAtIndex:3] floatValue]];
+        TreemapNode *newNode = [[TreemapNode alloc] initWithData:[dataLine objectAtIndex:0] Category:[dataLine objectAtIndex:1] ValA:[[dataLine objectAtIndex:2] floatValue]];
         
-        NSLog( @"%@ is in the category %@ with the value %f and %f", newNode.name, newNode.category, newNode.valueA, newNode.valueB);
+        NSLog( @"%@ is in the category %@ with the value %f", newNode.name, newNode.category, newNode.valueA);
         [tempData setValue:newNode forKey:newNode.name];
         [rawCategories addObject:[dataLine objectAtIndex:1]];
     }
     
     // First, add high-level categories
     for(NSString *category in rawCategories) {
-        TreemapNode *catNode = [[TreemapNode alloc] initWithData:category Category:nil ValA:0 ValB:0];
+        TreemapNode *catNode = [[TreemapNode alloc] initWithData:category Category:nil ValA:0];
         NSArray * matchingItems = [[tempData allValues] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@" category MATCHES[cd] %@ ", category]];
-//        NSLog(@"All nodes that match %@", category);
         [catNode addChildNodes:matchingItems];
         [self.data setValue:catNode forKey:catNode.name];
     }
@@ -166,20 +177,46 @@
     for(TreemapNode *testNode in [self.data allValues] ) {
         NSLog(@"Node: %@, %f, and has %@ children.", testNode.name, testNode.score, testNode.childNodes);
     }
-    
-    NSMutableArray *tmpArr = [NSMutableArray arrayWithArray:[self.data keysSortedByValueUsingSelector:@selector(compareName:)]];
-    
-    NSLog(@"%@ AHHHHHHHHHHHHHHHHHHHHHHH", NSStringFromClass( [tmpArr class] ));
+
     self.sortedKeys = nil;
     self.sortedKeys = [NSMutableArray arrayWithArray:[self.data keysSortedByValueUsingSelector:@selector(compareName:)]];
-    //    self.sortedKeys = [[self.data keysSortedByValueUsingSelector:@selector(compareName:)] mutableCopy];
-    NSLog(@"%@ AHHHHHHHHHHHHHHHHHHHHHHH", NSStringFromClass( [self.sortedKeys class] ));
     NSLog(@"\nself.sortedKeys:%@\nself.sortedKeys\n\n", self.sortedKeys);
 
     self.categoryData = self.data;
     self.sortedCategoryKeys = self.sortedKeys;
-//    self.categoryData = [[NSMutableDictionary alloc] initWithDictionary:self.data copyItems:true];
-//    self.sortedCategoryKeys = [[NSMutableArray alloc] initWithArray:self.sortedKeys copyItems:true];
+    
+    self.topLevelTreemap = [[TreemapView alloc] initWithFrame:self.view.frame];
+    self.topLevelTreemap.delegate = self;
+    self.topLevelTreemap.dataSource = self;
+    
+    // Set up scale/zooming
+    [scrollView addSubview:self.topLevelTreemap];
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return topLevelTreemap;
+}
+//
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
+{
+    
+//    NSLog(@"Using scrollViewDidEndZooming");
+//    NSLog(@"Two different sizes:\n%@\n%@\n\n", self.scrollView, self.topLevelTreemap);
+//    [self.topLevelTreemap setViewScale:CGSizeMake(self.scrollView.frame.size.width * scale, self.scrollView.frame.size.height * scale)];
+//    self.topLevelTreemap.frame.size = CGSizeMake(self.scrollView.frame.size.width * scale, self.scrollView.frame.size.height * scale);
+//    NSLog(@"Two different sizes:\n%@\n%@\n\n", self.scrollView, self.topLevelTreemap);
+//    self.topLevelTreemap.viewScale = scale;
+//    [self.topLevelTreemap setContentScaleFactor:scale];
+//    [self.scrollView setContentScaleFactor:scale];
+//    [self.scrollView setContentSize:CGSizeMake(2000.0, 2000.0)];
+}
+
+- (void)doPinch:(UIPinchGestureRecognizer *)pinch {
+    if (pinch.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"Just began!");
+    } else {
+        NSLog(@"%f", pinch.scale);
+    }
 }
 
 - (void)viewDidUnload {
@@ -192,7 +229,8 @@
 - (void)dealloc {
 	self.data = nil;
 	self.sortedKeys = nil;
-	
+
+    [scrollView release];
 	[super dealloc];
 }
 

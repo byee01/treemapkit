@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		104763B7154F91D700ECF6C1 /* military_spending.csv in Resources */ = {isa = PBXBuildFile; fileRef = 104763B6154F91D700ECF6C1 /* military_spending.csv */; };
 		107E17EC154DB43100DE3F82 /* internet_usage.csv in Resources */ = {isa = PBXBuildFile; fileRef = 107E17EB154DB43100DE3F82 /* internet_usage.csv */; };
 		107E17F3154DB72C00DE3F82 /* TreemapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 107E17F2154DB72C00DE3F82 /* TreemapNode.m */; };
 		1CB158601170635500914E92 /* TreemapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB1585D1170635500914E92 /* TreemapView.m */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		104763B6154F91D700ECF6C1 /* military_spending.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = military_spending.csv; sourceTree = "<group>"; };
 		107E17EB154DB43100DE3F82 /* internet_usage.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = internet_usage.csv; sourceTree = "<group>"; };
 		107E17F1154DB72C00DE3F82 /* TreemapNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreemapNode.h; sourceTree = "<group>"; };
 		107E17F2154DB72C00DE3F82 /* TreemapNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreemapNode.m; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				107E17EB154DB43100DE3F82 /* internet_usage.csv */,
 				1CB158621170652B00914E92 /* data.plist */,
 				377E4D3A137CD54100E4A5EB /* TreemapDemoViewController.xib */,
+				104763B6154F91D700ECF6C1 /* military_spending.csv */,
 				377E4D3B137CD54100E4A5EB /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* TreemapDemo-Info.plist */,
 			);
@@ -193,6 +196,7 @@
 				377E4D3C137CD54100E4A5EB /* TreemapDemoViewController.xib in Resources */,
 				377E4D3D137CD54100E4A5EB /* MainWindow.xib in Resources */,
 				107E17EC154DB43100DE3F82 /* internet_usage.csv in Resources */,
+				104763B7154F91D700ECF6C1 /* military_spending.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

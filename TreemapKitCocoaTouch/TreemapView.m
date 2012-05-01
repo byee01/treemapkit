@@ -5,6 +5,7 @@
 
 @synthesize dataSource;
 @synthesize delegate;
+@synthesize viewScale;
 
 // Recursive workhorse of the process
 - (void)calcNodePositions:(CGRect)rect nodes:(NSArray *)nodes width:(CGFloat)width height:(CGFloat)height depth:(NSInteger)depth withCreate:(BOOL)createNode {
@@ -124,6 +125,7 @@
 // Runs calcNodePositions WITH withCreate.
 - (void)createNodes {
     NSArray *nodes = [self getData];
+//    NSLog(@"At createNodes with this data:\n%@\n\n", nodes);
     if (nodes && nodes.count > 0) {
         [self calcNodePositions:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
                           nodes:nodes
@@ -170,13 +172,28 @@
 }
 
 #pragma mark -
+#pragma mark TreemapView Set Scale
+- (void) setViewScale:(CGSize)newViewScale
+{
+    self.frame = CGRectMake(0, 0, newViewScale.width, newViewScale.height);
+    NSLog(@"My new frame is %@\n\n", self);
+    
+//    [self superview].transform = CGAffineTransformMakeScale(newViewScale, newViewScale);
+    
+    [self resizeNodes];
+}
+
+#pragma mark -
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         initialized = NO;
-		self.backgroundColor = [UIColor grayColor];
+		self.backgroundColor = [UIColor greenColor];
 		self.opaque = YES;
+//        self.viewScale = 1.0;
     }
+    NSLog(@"%@", self.layer);
+    NSLog(@"I start off with frame of: %@\n\n", self);
     return self;
 }
 
@@ -192,7 +209,8 @@
         initialized = YES;
     }
 	else {	// we need to rearrange, at the very least...
-		[self resizeNodes];
+        [self resizeNodes];
+
 	}
 	
 	[UIView commitAnimations];

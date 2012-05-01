@@ -10,16 +10,14 @@
 
 @implementation TreemapNode
 
-@synthesize name, category, valueA, valueB, score, childNodes;
+@synthesize name, category, valueA, score, childNodes;
 
 -(id)initWithData:(NSString *)newName
          Category:(NSString *)newCategory
-           ValA:(float)newValA
-           ValB:(float)newValB {
+           ValA:(float)newValA {
     self.name = newName;
     self.category = newCategory;
     self.valueA = newValA;
-    self.valueB = newValB;
     self.score = newValA;
     self.childNodes = [[NSMutableDictionary alloc] init];
     return self;

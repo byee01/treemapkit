@@ -1,12 +1,14 @@
 #import <UIKit/UIKit.h>
 
+@class TreemapDemoViewController;
+
 @interface TreemapDemoAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
-	UINavigationController *navigationController;
+    IBOutlet TreemapDemoViewController *treemapViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, retain) IBOutlet TreemapDemoViewController *treemapViewController;
 
 @end
 

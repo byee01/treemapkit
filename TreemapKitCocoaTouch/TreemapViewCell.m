@@ -48,8 +48,8 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	if ([delegate respondsToSelector:@selector(treemapViewCell:tapped:)])
-		[delegate treemapViewCell:self tapped:index];
+//	if ([delegate respondsToSelector:@selector(treemapViewCell:tapped:)])
+//		[delegate treemapViewCell:self tapped:index];
 }
 //
 //- (void)dealloc {

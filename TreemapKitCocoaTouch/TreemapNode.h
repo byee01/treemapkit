@@ -12,7 +12,6 @@
     NSString *name;
     NSString *category;
     float valueA;
-    float valueB;
     float score;
     NSMutableDictionary *childNodes;
 }
@@ -20,14 +19,12 @@
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *category;
 @property float valueA;
-@property float valueB;
 @property float score;
 @property (strong, nonatomic) NSMutableDictionary *childNodes;
 
 -(id)initWithData:(NSString *) newName
          Category:(NSString *) newCategory
-             ValA:(float) valueA
-             ValB:(float) valueB;
+             ValA:(float) valueA;
 
 //- (void)setCategoryIndex:(NSNumber *)categoryIndex;
 

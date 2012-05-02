@@ -33,13 +33,11 @@
         self.score += tmpTN.valueA;
         [self.childNodes setValue:tmpTN forKey:tmpTN.name];
     }
-    NSLog(@"%@ score is now %f", self.name, self.score);
 }
 
 - (void)addChildNode:(TreemapNode *)newChildNode {
     self.score += newChildNode.valueA;
     [self.childNodes setValue:newChildNode forKey:newChildNode.name];
-    NSLog(@"%@ score is now %f", self.name, self.score);
 }
 
 - (NSComparisonResult)compareName:(TreemapNode *)otherObject {

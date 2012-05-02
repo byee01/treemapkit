@@ -173,11 +173,9 @@
 
 #pragma mark -
 #pragma mark TreemapView Set Scale
-- (void) setViewScale:(CGSize)newViewScale
+- (void) newViewScale:(float)newViewScale
 {
-    self.frame = CGRectMake(0, 0, newViewScale.width, newViewScale.height);
-    NSLog(@"My new frame is %@\n\n", self);
-    
+    NSLog(@"%f viewScale", newViewScale);
 //    [self superview].transform = CGAffineTransformMakeScale(newViewScale, newViewScale);
     
     [self resizeNodes];
@@ -190,9 +188,7 @@
         initialized = NO;
 		self.backgroundColor = [UIColor greenColor];
 		self.opaque = YES;
-//        self.viewScale = 1.0;
     }
-    NSLog(@"%@", self.layer);
     NSLog(@"I start off with frame of: %@\n\n", self);
     return self;
 }

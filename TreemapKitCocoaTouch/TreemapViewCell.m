@@ -17,7 +17,7 @@
 		self.layer.borderWidth = 1.0;
 		self.layer.borderColor = [[UIColor darkGrayColor] CGColor];
 
-		self.textLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width - 4, 20)] autorelease];
+		self.textLabel = [[[UILabel alloc] initWithFrame:CGRectIntegral(CGRectMake(0, 0, frame.size.width - 4, 20))] autorelease];
 		textLabel.font = [UIFont boldSystemFontOfSize:20];
 		textLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
 		textLabel.textAlignment = UITextAlignmentCenter;
@@ -27,7 +27,7 @@
 		textLabel.adjustsFontSizeToFitWidth = YES;
 		[self addSubview:textLabel];
 
-		self.valueLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width - 4, 20)] autorelease];
+		self.valueLabel = [[[UILabel alloc] initWithFrame:CGRectIntegral(CGRectMake(0, 0, frame.size.width - 4, 20))] autorelease];
 		valueLabel.font = [UIFont boldSystemFontOfSize:14];
 		valueLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
 		valueLabel.textAlignment = UITextAlignmentCenter;
@@ -35,6 +35,7 @@
 		valueLabel.backgroundColor = [UIColor clearColor];
 		valueLabel.lineBreakMode = UILineBreakModeCharacterWrap;
 		valueLabel.adjustsFontSizeToFitWidth = YES;
+
 		[self addSubview:valueLabel];
 	}
 	return self;
@@ -43,13 +44,14 @@
 - (void)layoutSubviews {
 	[super layoutSubviews];
 
-	textLabel.frame = CGRectMake(0, self.frame.size.height / 2 - 10, self.frame.size.width, 20);
-	valueLabel.frame = CGRectMake(0, self.frame.size.height / 2 + 10, self.frame.size.width, 20);
+    
+	textLabel.frame = CGRectIntegral(CGRectMake(0, self.frame.size.height / 2 - 10, self.frame.size.width, 20));
+	valueLabel.frame = CGRectIntegral(CGRectMake(0, self.frame.size.height / 2 + 10, self.frame.size.width, 20));
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-//	if ([delegate respondsToSelector:@selector(treemapViewCell:tapped:)])
-//		[delegate treemapViewCell:self tapped:index];
+	if ([delegate respondsToSelector:@selector(treemapViewCell:tapped:)])
+		[delegate treemapViewCell:self tapped:index];
 }
 //
 //- (void)dealloc {

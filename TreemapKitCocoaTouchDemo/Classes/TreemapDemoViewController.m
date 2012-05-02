@@ -12,8 +12,10 @@
 	NSString *key = [self.sortedKeys objectAtIndex:index];
 	TreemapNode *val = [self.data objectForKey:key];
 	cell.textLabel.text = key;
-    cell.valueLabel.text = [val category];
-    // (float) ([val categoryIndex] + 1.0)  / [self.categories count]
+
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    cell.valueLabel.text = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithFloat:[val score]]]];
     cell.backgroundColor = [UIColor colorWithHue: (float)index / (self.sortedKeys.count)
 									  saturation:1 brightness:0.75 alpha:1];
 }
@@ -22,63 +24,30 @@
 #pragma mark TreemapView delegate
 
 - (void)treemapView:(TreemapView *)treemapView tapped:(NSInteger)index {
-//	NSLog(@"%f %f %f %f", treemapView.bounds.origin.x, treemapView.bounds.origin.y, treemapView.bounds.size.width, treemapView.bounds.size.height);
-	/*
-	 * change the value
-     * Original version
 	NSString *key = [self.sortedKeys objectAtIndex:index];
-	NSInteger num = [[self.data objectForKey:key] integerValue] + 300;
-	NSNumber *newNum = [NSNumber numberWithInteger:num];
-	[self.data setValue:newNum forKey:key];
-	 */
-    
-//    // This is for removing. Just a test.    
-//    NSString *key = [self.sortedKeys objectAtIndex:index];
-//    NSLog(@"%@ key is for %@ and sorted keys is at count %d/%d", key, [self.data objectForKey:key], [self.sortedKeys count], [[self.data allKeys] count]);
-//    [self.sortedKeys removeObjectAtIndex:index];
-//    [self.data removeObjectForKey:key];
-//    NSLog(@"%@ removed and now sorted keys is at count %d/%d", key, [self.sortedKeys count], [[self.data allKeys] count]);
-
-    NSString *key = [self.sortedKeys objectAtIndex:index];
-    NSLog(@"%@ key is for %@ and sorted keys is at count %d/%d", key, [self.data objectForKey:key], [self.sortedKeys count], [[self.data allKeys] count]);
-    
-    NSLog(@"\n\nThe original data and keys:\n%@\n\n", self.data);
-    if([[[self.data objectForKey:key] childNodes] count] > 0) {
-        NSLog(@"Ha! You have %d children.", [[[self.data objectForKey:key] childNodes] count]);
-        NSMutableDictionary *tmpDict = [[self.data objectForKey:key] childNodes];
-        self.data = nil;
-        self.sortedKeys = nil;
-
-        self.data = [[NSMutableDictionary alloc] initWithDictionary:tmpDict];
-        self.sortedKeys = [[NSMutableArray alloc] initWithArray:[self.data keysSortedByValueUsingSelector:@selector(compareName:)]];
-//        self.sortedKeys = [NSMutableArray arrayWithArray:[self.data keysSortedByValueUsingSelector:@selector(compareName:)]];
+    TreemapNode *tappedNode = [self.data objectForKey:key];
+//    TreemapView *categoryView = [[topLevelTreemap subviews] objectAtIndex:index];
+    if ([tappedNode.childNodes count] > 0) {
+        
+        [scrollView setMinimumZoomScale:0.5];
+        self.scrollView.zoomScale = 0.5;
+        NSLog(@"Replace the data now.");
+        NSLog(@"Data used to be %@", self.data);
+        self.data = tappedNode.childNodes;
+        NSLog(@"Data is now %@", self.data);
+        self.sortedKeys = [NSMutableArray arrayWithArray:[self.data keysSortedByValueUsingSelector:@selector(compareName:)]];
+    } else {
+        self.scrollView.zoomScale = 2.0;
+        self.data = self.categoryData;
+        self.sortedKeys = self.sortedCategoryKeys;
     }
-    NSLog(@"\n\nThe new data and keys:\n%@\n\n", self.data);
 
-
-	/*
-	 * resize rectangles with animation
-	 */
-	[UIView beginAnimations:@"reload" context:nil];
-	[UIView setAnimationDuration:0.5];
-
-	[(TreemapView *)self.view reloadData];
-
-	[UIView commitAnimations];
-
-	/*
-	 * highlight the background
-	 */
-	[UIView beginAnimations:@"highlight" context:nil];
-	[UIView setAnimationDuration:1.0];
-
-	TreemapViewCell *cell = (TreemapViewCell *)[self.view.subviews objectAtIndex:index];
-	UIColor *color = cell.backgroundColor;
-	[cell setBackgroundColor:[UIColor whiteColor]];
-	[cell setBackgroundColor:color];
+    [UIView beginAnimations:@"Highlight change" context:NULL];
+    [UIView setAnimationDuration:0.25];
     
-//    [cell removeFromSuperview]
-
+    self.scrollView.zoomScale = 1.0;
+    [scrollView setMinimumZoomScale:1.0];
+    [treemapView reloadData];
 	[UIView commitAnimations];
 }
 
@@ -112,8 +81,9 @@
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation 
 	// A this point, our view orientation is set to the new orientation.
 {
-	TreemapView *tree = (TreemapView *)self.view;
-	[tree setNeedsLayout];
+//	TreemapView *tree = (TreemapView *)self.view;
+	[topLevelTreemap setNeedsLayout];
+//    [tree setNeedsLayout];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -188,7 +158,7 @@
     self.topLevelTreemap = [[TreemapView alloc] initWithFrame:self.view.frame];
     self.topLevelTreemap.delegate = self;
     self.topLevelTreemap.dataSource = self;
-    
+
     // Set up scale/zooming
     [scrollView addSubview:self.topLevelTreemap];
 }
@@ -196,27 +166,8 @@
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return topLevelTreemap;
 }
-//
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
-{
-    
-//    NSLog(@"Using scrollViewDidEndZooming");
-//    NSLog(@"Two different sizes:\n%@\n%@\n\n", self.scrollView, self.topLevelTreemap);
-//    [self.topLevelTreemap setViewScale:CGSizeMake(self.scrollView.frame.size.width * scale, self.scrollView.frame.size.height * scale)];
-//    self.topLevelTreemap.frame.size = CGSizeMake(self.scrollView.frame.size.width * scale, self.scrollView.frame.size.height * scale);
-//    NSLog(@"Two different sizes:\n%@\n%@\n\n", self.scrollView, self.topLevelTreemap);
-//    self.topLevelTreemap.viewScale = scale;
-//    [self.topLevelTreemap setContentScaleFactor:scale];
-//    [self.scrollView setContentScaleFactor:scale];
-//    [self.scrollView setContentSize:CGSizeMake(2000.0, 2000.0)];
-}
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
 
-- (void)doPinch:(UIPinchGestureRecognizer *)pinch {
-    if (pinch.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"Just began!");
-    } else {
-        NSLog(@"%f", pinch.scale);
-    }
 }
 
 - (void)viewDidUnload {

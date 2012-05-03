@@ -4,7 +4,7 @@
 //#import "JSONKit.h"
 
 @implementation TreemapDemoViewController
-@synthesize scrollView, data, sortedKeys, categoryData, sortedCategoryKeys, topLevelTreemap;
+@synthesize scrollView, data, sortedKeys, categoryData, sortedCategoryKeys, topLevelTreemap, currFilePath;
 
 #pragma mark -
 
@@ -93,6 +93,8 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
+    currFilePath = @"internet_usage";
+    
     // Set up scrollViews
     scrollView.clipsToBounds = YES;
     scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
@@ -107,21 +109,45 @@
 //    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(doPinch:)];
 //    [self.view addGestureRecognizer:pinch];
     
+    [self switchCSVData:currFilePath];
+    
+    self.topLevelTreemap = [[TreemapView alloc] initWithFrame:self.view.frame];
+    self.topLevelTreemap.delegate = self;
+    self.topLevelTreemap.dataSource = self;
 
+    // Set up scale/zooming
+    [scrollView addSubview:self.topLevelTreemap];
+    
+    // Set up swipe
+    self.scrollView.scrollEnabled = FALSE; 
+    UISwipeGestureRecognizer *recognizer;
+    recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    recognizer.delaysTouchesBegan = TRUE;
+    [self.scrollView addGestureRecognizer:recognizer];
+    [recognizer release];
+    
+    recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    recognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.scrollView addGestureRecognizer:recognizer];
+    [recognizer release];
+    [self.scrollView delaysContentTouches];
+}
 
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"internet_usage" ofType:@"csv"];
+- (void)switchCSVData:(NSString *)newFilePath {
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:newFilePath ofType:@"csv"];
     NSLog( @"filePath: %@", path );
-//    /afs/andrew.cmu.edu/usr8/byee/Library/Application Support/iPhone Simulator/5.0/Applications/8F31AAD8-3600-477A-B55D-F9CB45D56333/TreemapDemo.app/military_spending.csv
-//    /afs/andrew.cmu.edu/usr8/byee/Library/Application Support/iPhone Simulator/5.0/Applications/8F31AAD8-3600-477A-B55D-F9CB45D56333/TreemapDemo.app/internet_usage.csv
+    //    /afs/andrew.cmu.edu/usr8/byee/Library/Application Support/iPhone Simulator/5.0/Applications/8F31AAD8-3600-477A-B55D-F9CB45D56333/TreemapDemo.app/military_spending.csv
+    //    /afs/andrew.cmu.edu/usr8/byee/Library/Application Support/iPhone Simulator/5.0/Applications/8F31AAD8-3600-477A-B55D-F9CB45D56333/TreemapDemo.app/internet_usage.csv
     
     self.data = [[NSMutableDictionary alloc] init];    
     NSError*  error;
     NSString* rawData = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error ];
-
+    
     NSArray* allLinedStrings = [rawData componentsSeparatedByCharactersInSet: [NSCharacterSet newlineCharacterSet]];
     
     NSMutableArray *rawCategories = [[NSMutableArray alloc] init];
-
+    
     NSMutableDictionary *tempData = [[NSMutableDictionary alloc] init];
     for(NSString *dataString in allLinedStrings) {
         NSArray *dataLine = [dataString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
@@ -141,33 +167,47 @@
         [catNode addChildNodes:matchingItems];
         [self.data setValue:catNode forKey:catNode.name];
     }
-
+    
     NSLog(@"\nself.data\n%@\nself.data\n", self.data);
     
     for(TreemapNode *testNode in [self.data allValues] ) {
         NSLog(@"Node: %@, %f, and has %@ children.", testNode.name, testNode.score, testNode.childNodes);
     }
-
+    
     self.sortedKeys = nil;
     self.sortedKeys = [NSMutableArray arrayWithArray:[self.data keysSortedByValueUsingSelector:@selector(compareName:)]];
     NSLog(@"\nself.sortedKeys:%@\nself.sortedKeys\n\n", self.sortedKeys);
-
+    
     self.categoryData = self.data;
     self.sortedCategoryKeys = self.sortedKeys;
-    
-    self.topLevelTreemap = [[TreemapView alloc] initWithFrame:self.view.frame];
-    self.topLevelTreemap.delegate = self;
-    self.topLevelTreemap.dataSource = self;
-
-    // Set up scale/zooming
-    [scrollView addSubview:self.topLevelTreemap];
 }
+
+- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)sender {
+    NSLog(@"SWIPED with %@", currFilePath);
+    if([currFilePath compare:@"internet_usage"]) {
+        NSLog(@"ITS TRUE");
+        currFilePath = @"internet_usage";  
+    } else {
+        currFilePath = @"military_spending";
+    }
+    NSLog(@"NEW CURR FILE PATH: %@", currFilePath);
+    [self switchCSVData:currFilePath];
+    [topLevelTreemap reloadData];
+}
+
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return topLevelTreemap;
 }
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
 
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+    if (self.scrollView.zoomScale!=1.0) {
+        // Zooming, disable scrolling
+        self.scrollView.scrollEnabled = TRUE;
+    } else {
+        // Not zoomed, let the scroll view scroll
+        self.scrollView.scrollEnabled = FALSE;
+    }
 }
 
 - (void)viewDidUnload {

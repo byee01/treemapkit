@@ -10,6 +10,8 @@
 	NSMutableDictionary *categoryData;
     
     TreemapView *topLevelTreemap;
+    
+    NSString *currFilePath;
 }
 @property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -20,6 +22,10 @@
 @property (strong, nonatomic) NSMutableDictionary *categoryData;
 
 @property (strong, nonatomic) TreemapView *topLevelTreemap;
+
+@property (strong, nonatomic) NSString *currFilePath;
+
+- (void)switchCSVData:(NSString *)filePath;
 
 @end
 

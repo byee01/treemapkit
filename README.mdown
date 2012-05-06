@@ -1,31 +1,8 @@
-NOTE:
-=====
+Treemapper
+===
 
-Other forks, including the original branch of this code all supply what amounts to a ListMap, not a TreeMap, as there is no notion of nesting items inside other items, parents, children, etc.  The goal of this project will be to create a true Tree implementation.
+Treemapper is fork off of a previous open-source project called treemapkit, which can be found here: https://github.com/yatsu/treemapkit
 
-TreemapKit
-==========
-
-TreemapKit is a treemap implementation for Cocoa Touch.
-You can display treemaps in iPhone, iPod touch and iPad.
-
-[Click here to see the simple demo app](http://www.flickr.com/photos/14555412@N05/4507143423/ )
-
-![](http://farm3.static.flickr.com/2302/4507143463_63823457b8.jpg)
-
-![](https://img.skitch.com/20110528-tjxqda7psnjuxecpx1d8y8i691.png)
-
-License
--------
-
-TreemapKit is provided under the [MIT License](http://github.com/yatsu/treemapkit/blob/master/LICENSE.txt ).
-
-How to use
-----------
-
-1. Copy TreemapKit folder to your source tree and add it to Xcode project.
-2. Import "TreemapView.h" from your code.
-3. Implement both TreemapViewDataSource and TreemapViewDelegate protocols.
 
 Class References
 ----------------
